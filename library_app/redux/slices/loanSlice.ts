@@ -78,7 +78,11 @@ export const loanSlice = createSlice({
       state.status = "pending"
     })
     builder.addCase(returnLoan.fulfilled, (state, action) => {
-      state.loans = state.loans.filter((loan) => loan.id !== action.payload.id)
+      state.loans = state.loans.filter((loan) => {
+        if (loan.id == action.payload.id) loan.return_at = action.payload.return_at
+        return loan
+      })
+      state.status = "fullfill"
     })
 
     builder.addCase(returnLoan.rejected, (state, action) => {
