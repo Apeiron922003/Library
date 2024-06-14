@@ -3,9 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 let refreshTime = 0
 export const client = axios.create({
-    baseURL: "http://10.136.253.210:3000/api/"
-    // baseURL: "http://localhost:3000/api/"
-
+    baseURL: "http://localhost:3000/api/"
 })
 
 client.interceptors.request.use(async (config) => {
